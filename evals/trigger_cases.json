@@ -1,0 +1,99 @@
+{
+  "recommended_threshold": 0.34,
+  "description_required_concepts": [
+    "value_investing"
+  ],
+  "positive_concepts": {
+    "value_investing": [
+      "巴菲特",
+      "芒格",
+      "段永平",
+      "李录",
+      "价值投资",
+      "投研",
+      "投资研究",
+      "投资价值",
+      "值得投资",
+      "invest",
+      "value investing"
+    ],
+    "research": [
+      "研究",
+      "分析",
+      "精读",
+      "调研",
+      "研究一下",
+      "研究团队",
+      "深研"
+    ],
+    "earnings": [
+      "财报",
+      "年报",
+      "季报",
+      "earnings",
+      "报表",
+      "电话会"
+    ],
+    "valuation": [
+      "估值",
+      "折现",
+      "DCF",
+      "IRR",
+      "安全边际",
+      "内在价值",
+      "贵不贵"
+    ],
+    "moat_business": [
+      "护城河",
+      "商业模式",
+      "生意",
+      "竞争力",
+      "moat"
+    ],
+    "portfolio_tracking": [
+      "组合",
+      "持仓",
+      "论文",
+      "跟踪",
+      "检视",
+      "再平衡"
+    ],
+    "industry": [
+      "行业",
+      "赛道",
+      "筛选",
+      "漏斗",
+      "格局",
+      "竞争态势"
+    ]
+  },
+  "negative_patterns": [
+    "翻译",
+    "translate",
+    "写代码",
+    "code",
+    "天气",
+    "小说"
+  ],
+  "should_trigger": [
+    {"text": "帮我研究一下腾讯这家公司的投资价值", "family": "investment-research"},
+    {"text": "用巴菲特和芒格的框架分析美团值不值得买", "family": "investment-team"},
+    {"text": "精读拼多多2025Q4财报，看看管理层怎么说", "family": "earnings-review"},
+    {"text": "给这家公司做个十年折现估值分析", "family": "valuation"},
+    {"text": "分析一下茅台的护城河和商业模式", "family": "moat-analysis"},
+    {"text": "帮我研究下我的组合需不需要调整", "family": "portfolio-review"},
+    {"text": "帮我研究一下AI算力行业里值得投资的标的", "family": "industry-funnel"},
+    {"text": "帮我跟踪一下持有腾讯的投资研究论文", "family": "thesis-tracker"}
+  ],
+  "should_not_trigger": [
+    {"text": "把这篇文章翻译成英文", "family": "translate_only"},
+    {"text": "帮我写一段 React 代码", "family": "code_only"},
+    {"text": "今天北京天气怎么样", "family": "weather"},
+    {"text": "推荐一本好看的科幻小说", "family": "novel"}
+  ],
+  "near_neighbor": [
+    {"text": "整理一下这份研报的摘要", "family": "summary_only"},
+    {"text": "只把财报里的数字列出来就行", "family": "numbers_only"},
+    {"text": "把腾讯和网易的股价历史拉出来对比一下", "family": "price_data_only"}
+  ]
+}
