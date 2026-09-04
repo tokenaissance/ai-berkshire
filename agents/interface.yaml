@@ -1,0 +1,64 @@
+interface:
+  display_name: "AI Berkshire"
+  short_description: "价值投资研究框架——把巴菲特/芒格/段永平/李录四大师方法论系统化：投研、财报精读、估值与十年折现、护城河、行业竞争、风险管理、组合审视、论文追踪、主题筛选；双源交叉验证 + 工具精确计算 + 数据抽检准出"
+  default_prompt: "Use $ai-berkshire as the value-investment research framework. First classify intent (investment-research / investment-team / earnings-review / earnings-team / checklist-valuation / industry / funnel / management / portfolio / thesis / screening / data), then route to the matching module in {baseDir}/skills/ and execute its steps. Mandatory invariants: (1) pre-assess information richness A/B/C and run the AI-bias self-check first, writing the rating into the report header; (2) every calculation — market cap, PE/PB/ROE, three-scenario, terminal-value DCF — must run through python3 {baseDir}/tools/financial_rigor.py or {baseDir}/tools/terminal_value.py, never mental arithmetic; Taiwan data via {baseDir}/tools/twstock_data.py, A-shares via {baseDir}/tools/ashare_data.py; (3) every key data point needs two independent sources per {baseDir}/skills/financial-data.md, flag any >1% divergence with reason; (4) write the report into reports/ per {baseDir}/CLAUDE.md naming (by company directory, {公司名}-research-{YYYYMMDD}.md); (5) before release run python3 {baseDir}/tools/report_audit.py extract, verify each sampled point from reliable sources, then verdict — approved (pass) or sent back (fail). Report in Chinese, direct and terse, stars 1-5 (no half stars), label facts vs. opinions, show both bull and bear, and state data insufficiency honestly."
+  examples:
+    - "帮我研究一下腾讯"
+    - "用团队模式分析美团"
+    - "精读拼多多 2025Q4 财报"
+    - "给这家公司做个十年折现估值"
+    - "分析茅台的护城河和商业模式"
+    - "我的组合需要检视吗"
+    - "AI 算力行业里值得投资的公司，帮我筛选"
+    - "跟踪我持有腾讯的投资论文"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "fastagent"
+    - "openai"
+    - "claude"
+    - "generic"
+    - "agent-skills-compatible"
+  activation:
+    mode: "intent"
+  execution:
+    context: "framework"
+    shell: "bash"
+    languages: ["python3"]
+  trust:
+    source_tier: "remote"
+    remote_inline_execution: "forbid"
+    remote_metadata_policy: "allow read-only public data; forbid uploading user holdings or reports"
+    generated_public_claims: "evidence-bound"
+  permissions:
+    network: "WebSearch for public filings/industry reports; FinMind public API for Taiwan quotes (token stays local); no account/trading access"
+    file_write: "reports/ output only; local/finmind_token.txt (gitignored) for Taiwan token; never modify user portfolio or config"
+    subprocess: "python3 for the bundled tools (financial_rigor.py, terminal_value.py, twstock_data.py, report_audit.py, ashare_data.py); no arbitrary code execution"
+    interactive: "avoid unless a tool requires user-provided credentials"
+  degradation:
+    fastagent: "canonical-source"
+    openai: "metadata-adapter"
+    claude: "canonical-source"
+    generic: "neutral-source"
+    agent-skills-compatible: "canonical-source"
+gates:
+  scaffold:
+    - "SKILL.md frontmatter with name and description"
+    - "README hook and natural trigger examples"
+    - "clear exclusions (summary/translation only is not research)"
+  production:
+    - "agents/interface.yaml"
+    - "evals/trigger_cases.json"
+    - "manifest.json with semver version"
+    - "install and README verification (npx skills add and git clone paths)"
+    - "root-only discoverable SKILL.md entrypoint"
+  library:
+    - "reports/skill-ir.json"
+    - "reports/trigger-eval.json"
+    - "portability notes across Agent platforms"
+    - "trust boundary (public data read-only; reports are research tools, not investment advice)"
+  governed:
+    - "secret scan (no FinMind token / credentials committed)"
+    - "rollback boundary (tools never modify user config or holdings)"
+    - "public claim guard (validation and data claims match tests)"
+    - "README, MIT LICENSE, and install evidence verified"
