@@ -1,0 +1,208 @@
+{
+  "ok": true,
+  "threshold": 0.34,
+  "description_concepts": [
+    "earnings",
+    "industry",
+    "moat_business",
+    "portfolio_tracking",
+    "research",
+    "valuation",
+    "value_investing"
+  ],
+  "missing_description_concepts": [],
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "false_positive": 0,
+    "false_negative": 0,
+    "pass_rate": 1.0
+  },
+  "failures": [],
+  "results": {
+    "should_trigger": [
+      {
+        "prompt": "帮我研究一下腾讯这家公司的投资价值",
+        "family": "investment-research",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "research",
+          "value_investing"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "用巴菲特和芒格的框架分析美团值不值得买",
+        "family": "investment-team",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "research",
+          "value_investing"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "精读拼多多2025Q4财报，看看管理层怎么说",
+        "family": "earnings-review",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "earnings",
+          "research"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "给这家公司做个十年折现估值分析",
+        "family": "valuation",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "research",
+          "valuation"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "分析一下茅台的护城河和商业模式",
+        "family": "moat-analysis",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "moat_business",
+          "research"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我研究下我的组合需不需要调整",
+        "family": "portfolio-review",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.4,
+        "matched_concepts": [
+          "portfolio_tracking",
+          "research"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我研究一下AI算力行业里值得投资的标的",
+        "family": "industry-funnel",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "industry",
+          "research",
+          "value_investing"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "帮我跟踪一下持有腾讯的投资研究论文",
+        "family": "thesis-tracker",
+        "expected_trigger": true,
+        "predicted_trigger": true,
+        "passed": true,
+        "score": 0.6,
+        "matched_concepts": [
+          "portfolio_tracking",
+          "research",
+          "value_investing"
+        ],
+        "negative_pattern": null
+      }
+    ],
+    "should_not_trigger": [
+      {
+        "prompt": "把这篇文章翻译成英文",
+        "family": "translate_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": "翻译"
+      },
+      {
+        "prompt": "帮我写一段 React 代码",
+        "family": "code_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "今天北京天气怎么样",
+        "family": "weather",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": "天气"
+      },
+      {
+        "prompt": "推荐一本好看的科幻小说",
+        "family": "novel",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": "小说"
+      }
+    ],
+    "near_neighbor": [
+      {
+        "prompt": "整理一下这份研报的摘要",
+        "family": "summary_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "只把财报里的数字列出来就行",
+        "family": "numbers_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.2,
+        "matched_concepts": [
+          "earnings"
+        ],
+        "negative_pattern": null
+      },
+      {
+        "prompt": "把腾讯和网易的股价历史拉出来对比一下",
+        "family": "price_data_only",
+        "expected_trigger": false,
+        "predicted_trigger": false,
+        "passed": true,
+        "score": 0.0,
+        "matched_concepts": [],
+        "negative_pattern": null
+      }
+    ]
+  }
+}

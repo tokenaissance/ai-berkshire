@@ -5,6 +5,9 @@ Codex custom prompts are deprecated in favor of skills, but they provide the
 slash-command style entry point that Claude Code users expect.
 """
 
+# SCRIPT_INTERFACE = "internal-module"  # sync: invoked by workflows/install scripts
+SCRIPT_INTERFACE = "internal-module"
+
 from __future__ import annotations
 
 import sys
