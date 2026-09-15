@@ -27,6 +27,14 @@ for /d %%D in ("%ROOT%\codex-skills\*") do (
   if errorlevel 1 exit /b 1
   xcopy "%%~fD" "%DEST%\%%~nxD\" /E /I /Y >nul
   if errorlevel 1 exit /b 1
+  rem The fork stores the generated Codex adapter as SKILL.example.md (single-root
+  rem SKILL.md package contract); materialize the real SKILL.md Codex expects.
+  if exist "%DEST%\%%~nxD\SKILL.example.md" (
+    if not exist "%DEST%\%%~nxD\SKILL.md" (
+      ren "%DEST%\%%~nxD\SKILL.example.md" SKILL.md
+      if errorlevel 1 exit /b 1
+    )
+  )
 )
 
 echo Installed Codex skills to %DEST%

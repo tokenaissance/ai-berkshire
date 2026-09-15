@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Generate Codex skills from AI Berkshire Claude command files."""
 
+# SCRIPT_INTERFACE = "internal-module"  # sync: invoked by workflows/install scripts
+SCRIPT_INTERFACE = "internal-module"
+
 from __future__ import annotations
 
 import re
@@ -105,7 +108,12 @@ def main() -> None:
         name = source.stem
         source_text = source.read_text(encoding="utf-8")
         target_dir = CODEX_SKILLS / name
-        target = target_dir / "SKILL.md"
+        # Fork (fastagent) package contract: nested SKILL.md entrypoints are
+        # forbidden by fastagent-meta-skill validate_skill.py (a single root
+        # SKILL.md must be the only discoverable entrypoint). We keep the
+        # generated Codex adapter under SKILL.example.md in the repo; the
+        # install scripts materialize it back to SKILL.md on the user's disk.
+        target = target_dir / "SKILL.example.md"
         content = metadata_for(name, source.name, source_text) + codex_body(
             name, source.name, source_text
         )
